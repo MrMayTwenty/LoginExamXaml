@@ -5,6 +5,7 @@ import com.aaa.loginexamxaml.domain.model.BaseResponse
 import com.aaa.loginexamxaml.domain.model.LoginCredentialModel
 import kotlinx.coroutines.delay
 
+//Since Retrofit is not used we created a mock API for now
 class LoginApiImpl: LoginApi {
     override suspend fun login(username: String, password: String): BaseResponse<Boolean> {
         delay(3000)
@@ -13,7 +14,7 @@ class LoginApiImpl: LoginApi {
         if (loginCredentials != null){
             return BaseResponse("200", "Login Success", true)
         }
-        return BaseResponse("404", "Login Failed", false)
+        return BaseResponse("404", "User not found", false)
     }
 
     override suspend fun getAllLoginData(): BaseResponse<List<LoginCredentialModel>> {

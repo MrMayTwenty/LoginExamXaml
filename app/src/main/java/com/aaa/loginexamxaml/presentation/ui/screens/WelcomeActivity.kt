@@ -1,15 +1,23 @@
 package com.aaa.loginexamxaml.presentation.ui.screens
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.aaa.loginexamxaml.R
+import com.aaa.loginexamxaml.presentation.viewmodel.WelcomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class WelcomeActivity : AppCompatActivity() {
+
+    private val viewModel: WelcomeViewModel by viewModels()
+    private lateinit var btnLogOut: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -18,6 +26,22 @@ class WelcomeActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        setupUI()
+        setupEvents()
+    }
+
+    private fun setupUI() {
+        btnLogOut = findViewById(R.id.btnLogout)
+    }
+
+    private fun setupEvents() {
+        btnLogOut.setOnClickListener{
+            viewModel.logout()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

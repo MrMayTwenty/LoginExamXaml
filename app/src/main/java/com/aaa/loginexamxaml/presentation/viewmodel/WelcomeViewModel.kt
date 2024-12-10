@@ -6,4 +6,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WelcomeViewModel @Inject constructor(): ViewModel() {
+
+    fun logout(){
+        //TODO: API wise, this should dispose any caches and tokens for the user
+    }
 }

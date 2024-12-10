@@ -54,6 +54,8 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
+    implementation(libs.airbnb.lottie)
+
     //Dagger Hilt
     implementation(libs.dagger.hilt.android)
 //    ksp(libs.dagger.hilt.android.compiler)
