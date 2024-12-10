@@ -2,6 +2,9 @@
 
 ___
 
+![alt text](banner.jpg)
+___
+
 Hi Seven Seven Global Services!
 
 Thanks for taking the time to check out this Github Repository, This Readme serves as a guide and a glimpse on what to expect on this project
