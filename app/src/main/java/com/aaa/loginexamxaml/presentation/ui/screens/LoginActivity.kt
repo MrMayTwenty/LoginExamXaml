@@ -1,5 +1,6 @@
 package com.aaa.loginexamxaml.presentation.ui.screens
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -30,6 +31,20 @@ class LoginActivity : AppCompatActivity() {
         }
 
         setupEvents()
+
+        viewModel.loginValidation.observe(this) {
+            if (it != null) {
+                etUsername.error = it
+            }
+        }
+
+        viewModel.loginStatus.observe(this) {
+            if (it) {
+                val intent = Intent(this, WelcomeActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
     }
 
     private fun setupEvents() {
@@ -39,4 +54,6 @@ class LoginActivity : AppCompatActivity() {
             viewModel.login(userName,password)
         }
     }
+
+
 }
