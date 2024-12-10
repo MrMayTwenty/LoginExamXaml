@@ -81,6 +81,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupEvents() {
         btnLogin.setOnClickListener {
+            etLayoutUsername.error = ""
+            etLayoutPassword.error = ""
             val userName = etUsername.text.toString()
             val password = etPassword.text.toString()
             tvError.visibility = TextView.GONE

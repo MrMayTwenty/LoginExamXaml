@@ -17,6 +17,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     private val viewModel: WelcomeViewModel by viewModels()
     private lateinit var btnLogOut: Button
+    private lateinit var btnBonus: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun setupUI() {
         btnLogOut = findViewById(R.id.btnLogout)
+        btnBonus = findViewById(R.id.btnBonus)
     }
 
     private fun setupEvents() {
@@ -42,6 +44,11 @@ class WelcomeActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        btnBonus.setOnClickListener{
+            val intent = Intent(this, BonusActivity::class.java)
+            startActivity(intent)
         }
     }
 }
