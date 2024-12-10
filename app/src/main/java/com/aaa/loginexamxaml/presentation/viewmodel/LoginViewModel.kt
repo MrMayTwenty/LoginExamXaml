@@ -26,8 +26,9 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             val error =  validateLogin(username, password)
             _loginValidation.value = error
-            if(error != null){
-                loginRepository.login(username,password)
+            if(error == null){
+                val response = loginRepository.login(username,password)
+                _loginStatus.value = response.data
             }
         }
     }

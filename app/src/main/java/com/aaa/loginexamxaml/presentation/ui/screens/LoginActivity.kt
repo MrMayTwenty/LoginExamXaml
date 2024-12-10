@@ -11,14 +11,16 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.aaa.loginexamxaml.R
 import com.aaa.loginexamxaml.presentation.viewmodel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var btnLogin: Button
+    private lateinit var etPassword: EditText
+    private lateinit var etUsername: EditText
     private val viewModel: LoginViewModel by viewModels<LoginViewModel>()
 
-    private val etUsername: EditText = findViewById(R.id.etUsername)
-    private val etPassword: EditText = findViewById(R.id.etPassword)
-    private val btnLogin: Button = findViewById(R.id.btnLogin)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        setupUI()
         setupEvents()
 
         viewModel.loginValidation.observe(this) {
@@ -45,6 +47,12 @@ class LoginActivity : AppCompatActivity() {
                 finish()
             }
         }
+    }
+
+    private fun setupUI() {
+        etUsername = this.findViewById(R.id.etPassword)
+        etPassword = findViewById(R.id.etPassword)
+        btnLogin = findViewById(R.id.btnLogin)
     }
 
     private fun setupEvents() {
